@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Contact</title>
+       <style>
+         body{
+            background-color: black;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        .email-btn{
+            display:inline-block;
+            padding: 12px 24px;
+            background-color: transparent;
+            color:#64FFDA;
+            border: 2px solid #64FFDA;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition:all 0.3s ease;
+
+            box-shadow: 
+            0 0 10px,
+            0 0 20px;
+        }
+        .email-btn:hover{
+            background-color: #64FFDA;
+            color:#0A192F;
+            cursor: pointer;
+        }
+
+        .contact-section{
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(100,255,218,0.2);
+            width: 320px;
+        }
+
+        .message-box{
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #64FFDA;
+            border-radius: 6px;
+            background-color: #0A192F;
+            color: #64FFDA;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn{
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #64FFDA;
+            border: 2px solid #64FFDA;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover{
+            background-color: #64FFDA;
+            color: #0A192F;
+        }
+        
+        h1{
+            color:#64FFDA;
+            text-align:center;
+            font-size:larger;
+        }
+
+
+    
+       </style>
+    </head>
+    <body>
+        
+        <div class="contact-section">
+            <form>
+                <textarea class="message-box" rows="5" placeholder="Type your message here..."></textarea>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <br>
+            <a href="D:\VSCODE SCHOOL\My email.html" class="email-btn">Email Me</a>
+        </div>
+       
+      
+    </body>
+</html>

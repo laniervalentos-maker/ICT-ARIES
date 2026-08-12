@@ -1,0 +1,921 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Paysawan Travel Page</title>
+        <style>
+            :root {
+                --bg: #0a3d62;
+                --bg-2: #2f9e9a;
+                --surface: rgba(255, 250, 240, 0.14);
+                --surface-strong: rgba(255, 250, 240, 0.18);
+                --text: #fffdf8;
+                --muted: #e8f4f0;    
+
+                --accent: #ffb86b;
+                --accent-2: #4dc6d6;
+                --border: rgba(255, 255, 255, 0.18);
+                --shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                overflow-x: hidden;
+            }
+
+            body {
+                margin: 0;
+                font-family: "Segoe UI", Roboto, Arial, sans-serif;
+                line-height: 1.7;
+                color: var(--text);
+                min-height: 100vh;
+                background: linear-gradient(135deg, rgba(12, 72, 106, 0.86) 0%, rgba(66, 160, 157, 0.75) 45%, rgba(144, 208, 188, 0.82) 100%), url("Assets/images/images (5).jpg");
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                user-select: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+            }
+
+            a {
+                color: inherit;
+            }
+
+            .page-shell {
+                width: min(100%, 1200px);
+                margin: 0 auto;
+                padding: 24px 20px 60px;
+            }
+
+            .hero {
+                position: relative;
+                min-height: 88vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 36px 24px;
+                border-radius: 28px;
+                overflow: hidden;
+                border: 1px solid var(--border);
+                box-shadow: var(--shadow);
+                background: linear-gradient(120deg, rgba(4, 19, 33, 0.56), rgba(11, 85, 107, 0.42)), url("Assets/images/images (5).jpg");
+                background-size: cover;
+                background-position: center;
+            }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.16));
+                pointer-events: none;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 1;
+                max-width: 780px;
+                text-align: center;
+            }
+
+            .top-nav {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+                width: fit-content;
+                max-width: 100%;
+                margin: 0 auto 24px;
+                padding: 14px 18px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.14);
+                border: 1px solid var(--border);
+                box-shadow: var(--shadow);
+            }
+
+            .top-nav a {
+                text-decoration: none;
+                font-weight: 700;
+                padding: 10px 16px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.12);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(8px);
+                transition: transform 0.2s ease, background 0.2s ease;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .top-nav a:hover {
+                background: var(--accent);
+                color: #0a3d62;
+                transform: translateY(-2px);
+            }
+
+            .eyebrow {
+                margin: 0 0 8px;
+                font-size: 0.82rem;
+                font-weight: 700;
+                letter-spacing: 0.28em;
+                text-transform: uppercase;
+                color: var(--accent-2);
+            }
+
+            h1, h2, h3 {
+                margin-top: 0;
+                color: #ffffff;
+            }
+
+            h1 {
+                font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+                margin-bottom: 12px;
+            }
+
+            .hero p {
+                font-size: 1.08rem;
+                color: var(--muted);
+                margin: 0 auto;
+            }
+
+            .content-section {
+                margin-top: 24px;
+                padding: 26px;
+                border-radius: 24px;
+                background: linear-gradient(135deg, rgba(4, 19, 33, 0.7), rgba(11, 85, 107, 0.62));
+                border: 1px solid var(--border);
+                box-shadow: var(--shadow);
+            }
+
+            .section-lead {
+                max-width: 760px;
+                margin: 0 auto 18px;
+                text-align: center;
+                color: var(--muted);
+            }
+
+            .about-grid,
+            .location-grid,
+            .video-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            .about-visual img,
+            .video-visual iframe {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 20px;
+                box-shadow: 0 16px 33px rgba(0, 0, 0, 0.22);
+            }
+
+            .about-visual img {
+                min-height: 320px;
+            }
+
+            .about-copy,
+            .location-copy,
+            .video-copy {
+                padding: 22px;
+                border-radius: 20px;
+                background: rgba(3, 12, 22, 0.42);
+                border: 1px solid var(--border);
+            }
+
+            .card-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 16px;
+                margin-top: 22px;
+            }
+
+            .card-panel {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                border-radius: 16px;
+                background: linear-gradient(135deg, #fff9ef, #f7e3b6);
+                color: #15324a;
+                border: 1px solid #f0d7a1;
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+                min-height: 100%;
+                cursor: pointer;
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
+                animation: floatPanel 4s ease-in-out infinite;
+                text-decoration: none;
+            }
+
+            .card-panel:hover {
+                transform: translateY(-6px) scale(1.01);
+                box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+                animation: none;
+            }
+
+            @keyframes floatPanel {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-4px);
+                }
+            }
+
+            .card-img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+            }
+
+            .card-text {
+                padding: 14px 14px 16px;
+            }
+
+            .card-text h4,
+            .card-text p {
+                text-decoration: none;
+            }
+
+            .card-text h4 {
+                margin: 0 0 6px;
+                color: #10253e;
+            }
+
+            .card-text p {
+                margin: 0;
+                color: #57718a;
+                font-size: 0.95rem;
+            }
+
+            .why-visit-list {
+                list-style: none;
+                padding: 0;
+                margin: 20px 0 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 16px;
+            }
+
+            .why-visit-list li {
+                padding: 16px 18px;
+                border-radius: 16px;
+                background: rgba(3, 12, 22, 0.42);
+                border: 1px solid var(--border);
+                color: var(--muted);
+            }
+
+            .map-frame,
+            .video-frame {
+                width: 100%;
+                min-height: 360px;
+                border: 0;
+                border-radius: 20px;
+                box-shadow: 0 16px 33px rgba(0, 0, 0, 0.22);
+            }
+
+            .location-copy ol {
+                padding-left: 18px;
+                color: var(--muted);
+            }
+
+            .contact-section {
+                margin: 24px 0 0;
+                padding: 26px;
+                border-radius: 24px;
+                background: linear-gradient(135deg, rgba(4, 19, 33, 0.7), rgba(11, 85, 107, 0.62));
+                border: 1px solid var(--border);
+                box-shadow: var(--shadow);
+                text-align: center;
+                max-width: none;
+            }
+
+            .contact-section form {
+                display: grid;
+                gap: 12px;
+                margin-top: 16px;
+            }
+
+            .contact-form-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+                text-align: left;
+            }
+
+            .contact-field {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .contact-field label {
+                font-weight: 600;
+                color: var(--muted);
+            }
+
+            .contact-input,
+            .message-box {
+                width: 100%;
+                padding: 12px 14px;
+                border-radius: 14px;
+                border: 1px solid var(--border);
+                background: rgba(7, 19, 32, 0.82);
+                color: var(--text);
+                resize: vertical;
+                outline: none;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                font-size: 1rem;
+                min-height: 44px;
+            }
+
+            .contact-input:focus,
+            .message-box:focus {
+                border-color: var(--accent);
+                box-shadow: 0 0 0 3px rgba(255, 184, 107, 0.2);
+            }
+
+            .contact-input.invalid,
+            .message-box.invalid {
+                border-color: #ffb86b;
+                box-shadow: 0 0 0 3px rgba(255, 184, 107, 0.18);
+            }
+
+            .contact-input.valid,
+            .message-box.valid {
+                border-color: #6ee7b7;
+                box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.18);
+            }
+
+            .message-box {
+                min-height: 125px;
+            }
+
+            .submit-btn,
+            .email-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 11px 18px;
+                border-radius: 999px;
+                border: 1px solid var(--accent);
+                background: var(--accent);
+                color: #06243a;
+                font-weight: 700;
+                text-decoration: none;
+                transition: all 0.25s ease;
+                cursor: pointer;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+                min-height: 46px;
+            }
+
+            .submit-btn {
+                padding: 14px 24px;
+                min-width: 170px;
+                font-size: 1rem;
+            }
+
+            .email-btn {
+                padding: 10px 16px;
+                min-width: 140px;
+                font-size: 0.95rem;
+            }
+
+            .submit-btn:hover,
+            .email-btn:hover {
+                background: #ffdca8;
+                color: #06243a;
+                transform: translateY(-2px);
+            }
+
+            .email-link-row {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-top: 12px;
+            }
+
+            .popup-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(2, 10, 17, 0.75);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                z-index: 1200;
+            }
+
+            .popup-overlay.active {
+                display: flex;
+            }
+
+            .popup-card {
+                width: min(100%, 360px);
+                padding: 22px;
+                border-radius: 18px;
+                border: 1px solid var(--border);
+                box-shadow: var(--shadow);
+                background: linear-gradient(135deg, rgba(4, 19, 33, 0.95), rgba(11, 85, 107, 0.95));
+                text-align: center;
+            }
+
+            .popup-card.warning {
+                border-color: #ffb86b;
+            }
+
+            .popup-card.success {
+                border-color: #6ee7b7;
+            }
+
+            .popup-title {
+                margin: 0 0 8px;
+                font-size: 1.1rem;
+            }
+
+            .popup-message {
+                margin: 0;
+                color: var(--muted);
+            }
+
+            .audio-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 18px;
+            }
+
+            .audio-frame {
+                width: min(100%, 640px);
+                height: 180px;
+                border: 0;
+                border-radius: 16px;
+                box-shadow: 0 16px 33px rgba(0, 0, 0, 0.22);
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                inset: 0;
+                z-index: 1000;
+                background: rgba(0, 0, 0, 0.78);
+                justify-content: center;
+                align-items: center;
+                padding: 24px;
+            }
+
+            .modal.active {
+                display: flex;
+            }
+
+            .modal-content {
+                position: relative;
+                max-width: 900px;
+                width: 100%;
+                max-height: 90vh;
+                border-radius: 18px;
+                overflow: hidden;
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+                background: #fff;
+            }
+
+            .modal-content img {
+                display: block;
+                width: 100%;
+                height: auto;
+                max-height: 90vh;
+                object-fit: contain;
+            }
+
+            .modal-close {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                background: rgba(0, 0, 0, 0.7);
+                color: #fff;
+                border: none;
+                border-radius: 999px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+
+            .footer {
+                text-align: center;
+                padding: 16px 0 6px;
+                color: #f4f9f8;
+                font-size: 0.95rem;
+            }
+
+            @media (max-width: 900px) {
+                .about-grid,
+                .location-grid,
+                .video-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 780px) {
+                .top-nav {
+                    padding: 12px;
+                    border-radius: 20px;
+                }
+
+                .top-nav a {
+                    width: calc(50% - 6px);
+                    text-align: center;
+                }
+
+                .contact-form-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .page-shell {
+                    padding: 16px 14px 40px;
+                }
+
+                .hero {
+                    min-height: 72vh;
+                    padding: 24px 14px;
+                }
+
+                .content-section,
+                .contact-section {
+                    padding: 20px 16px;
+                }
+
+                .card-grid,
+                .why-visit-list {
+                    grid-template-columns: 1fr;
+                }
+
+                .submit-btn,
+                .email-btn {
+                    display: flex;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .email-link-row {
+                    flex-direction: column;
+                }
+
+                .map-frame,
+                .video-frame {
+                    min-height: 220px;
+                }
+
+                .audio-frame {
+                    height: 180px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-shell">
+            <nav class="top-nav">
+                <a href="#about">About</a>
+                <a href="#why-visit">Why Visit</a>
+                <a href="#location">Location</a>
+                <a href="#video">Video</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <header class="hero">
+                <div class="hero-content">
+                    <p class="eyebrow">Travel Destination</p>
+                    <h1>Paysawan</h1>
+                    <p>Paysawan is a peaceful coastal paradise in Bagac, Bataan, known for its calm waters, scenic views, and relaxed beach atmosphere.</p>
+                </div>
+            </header>
+
+            <section id="about" class="content-section">
+                <h2>About Paysawan</h2>
+                <p class="section-lead">A quiet coastal beach known for its natural beauty, simple charm, and peaceful atmosphere that makes every visit feel refreshing.</p>
+                <div class="about-grid">
+                    <div class="about-visual">
+                        <img src="Assets/images/images.jpg" alt="Paysawan shoreline with clear water">
+                    </div>
+                    <div class="about-copy">
+                        <h3>Why it feels special</h3>
+                        <p>Paysawan is a calm and welcoming beach destination in Bagac, Bataan. It is loved for its wide shoreline, clear water, and mountain backdrop that gives the place a peaceful and scenic look.</p>
+                        <p>It is a great spot for travelers who want to enjoy nature without the crowd and noise of bigger resorts.</p>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card-panel" data-image="Assets/images/images (1).jpg" data-title="Golden Shore">
+                        <img src="Assets/images/images (1).jpg" alt="Paysawan beach view" class="card-img">
+                        <div class="card-text">
+                            <h4>Golden Shore</h4>
+                            <p>Soft sand and bright water that make the beach look warm and inviting.</p>
+                        </div>
+                    </div>
+                    <div class="card-panel" data-image="Assets/images/images (2).jpg" data-title="Quiet Escape">
+                        <img src="Assets/images/images (2).jpg" alt="Paysawan coast line" class="card-img">
+                        <div class="card-text">
+                            <h4>Quiet Escape</h4>
+                            <p>Perfect for relaxing, enjoying the breeze, and escaping the busy city.</p>
+                        </div>
+                    </div>
+                    <div class="card-panel" data-image="Assets/images/images(4).jpg" data-title="Scenic Views">
+                        <img src="Assets/images/images(4).jpg" alt="Paysawan scenery" class="card-img">
+                        <div class="card-text">
+                            <h4>Scenic Views</h4>
+                            <p>Beautiful coastlines and mountain scenery create a memorable backdrop.</p>
+                        </div>
+                    </div>
+                    <div class="card-panel" data-image="Assets/images/images (5).jpg" data-title="Nature Retreat">
+                        <img src="Assets/images/images (5).jpg" alt="Paysawan beach landscape" class="card-img">
+                        <div class="card-text">
+                            <h4>Nature Retreat</h4>
+                            <p>Ideal for swimming, walking, camping, and enjoying a slow peaceful day.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="why-visit" class="content-section">
+                <h2>Why Visit Paysawan</h2>
+                <p class="section-lead">A laid-back destination that offers comfort, freedom, and beauty without too much fuss.</p>
+                <ul class="why-visit-list">
+                    <li><strong>Budget-friendly access:</strong> There is no entrance fee, so visitors only pay for the cottage or camping area they use.</li>
+                    <li><strong>No corkage fees:</strong> Guests can bring their own food and supplies without extra charges.</li>
+                    <li><strong>Fewer crowds:</strong> The beach feels quieter and more peaceful than busy commercial resorts.</li>
+                    <li><strong>Pet-friendly atmosphere:</strong> Travelers can enjoy the beach together with their pets.</li>
+                </ul>
+            </section>
+
+            <section id="location" class="content-section">
+                <h2>Location</h2>
+                <div class="location-grid">
+                    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25980.691372605113!2d120.38776525571957!3d14.538968003037521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33961a83d41c5f6b%3A0xc2c663efcf2b3c5a!2sPaysawan%2C%20Bagac%2C%20Bataan!5e0!3m2!1sen!2sph!4v1784634079379!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <div class="location-copy">
+                        <h3>How to get there</h3>
+                        <ol>
+                            <li>Start from the main highway and head toward Bagac - Mariveles Road.</li>
+                            <li>Pass by Pantingan Elementary School to confirm you are on the right route.</li>
+                            <li>Continue until you reach Barangay Saysain and the local barangay hall.</li>
+                            <li>Look for the welcome arch of Barangay Paysawan and follow the signs leading to the beach.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section id="video" class="content-section">
+                <h2>Proof of Its Beauty</h2>
+                <div class="video-grid">
+                    <div class="video-copy">
+                        <h3>See the charm for yourself</h3>
+                        <p>With calm waters, a wide shoreline, and scenic mountain views, Paysawan is the kind of place that feels both peaceful and unforgettable.</p>
+                        <p>It is perfect for beach lovers, campers, and anyone looking for a relaxing trip with natural beauty.</p>
+                    </div>
+                    <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/BoJmMe71qR4?si=LIKkzLWX2IdeqpMC&rel=0" title="Paysawan video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Travel Song</h2>
+                <div class="audio-container">
+                    <iframe class="audio-frame" src="https://open.spotify.com/embed/track/1QbOvACeYanja5pbnJbAmk?utm_source=generator&si=344e8832b858402d" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <h2>Contact Information</h2>
+                <p class="section-lead">Please provide your details in a clear and professional format so we can respond to your inquiry accordingly.</p>
+                <form id="contactForm" novalidate>
+                    <div class="contact-form-grid">
+                        <div class="contact-field">
+                            <label for="contactName">Full Name</label>
+                            <input id="contactName" class="contact-input" type="text" placeholder="Juan Dela Cruz" maxlength="30" required>
+                        </div>
+                        <div class="contact-field">
+                            <label for="contactEmail">Email Address</label>
+                            <input id="contactEmail" class="contact-input" type="email" placeholder="juan.delacruz@example.com" maxlength="50" required>
+                        </div>
+                        <div class="contact-field">
+                            <label for="contactPhone">Phone Number</label>
+                            <input id="contactPhone" class="contact-input" type="tel" placeholder="+639123456789" maxlength="13" inputmode="numeric" pattern="\\+63\\d{10}" title="Please enter a valid phone number starting with +63 and containing 13 characters">
+                        </div>
+                        <div class="contact-field">
+                            <label for="contactMessage">Your Message</label>
+                            <textarea id="contactMessage" class="message-box" placeholder="Please enter your message here..." maxlength="500" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <div class="email-link-row">
+                    <a href="TravelPage Email.html" class="email-btn">Open Email</a>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>&copy; 2026 Paysawan Travel Page</p>
+            </footer>
+        </div>
+
+        <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Image preview">
+            <div class="modal-content">
+                <button class="modal-close" type="button" aria-label="Close preview">×</button>
+                <img id="modalImage" src="" alt="Preview">
+            </div>
+        </div>
+
+        <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-label="Form status">
+            <div class="popup-card" id="popupCard">
+                <h3 class="popup-title" id="popupTitle">Notice</h3>
+                <p class="popup-message" id="popupMessage">Message here.</p>
+            </div>
+        </div>
+
+        <script>
+            const panels = document.querySelectorAll('.card-panel');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.modal-close');
+
+            if (panels.length && modal && modalImage) {
+                panels.forEach(panel => {
+                    panel.addEventListener('click', () => {
+                        modalImage.src = panel.getAttribute('data-image') || '';
+                        modal.classList.add('active');
+                    });
+                });
+            }
+
+            function closeModal() {
+                if (modal) {
+                    modal.classList.remove('active');
+                }
+                if (modalImage) {
+                    modalImage.src = '';
+                }
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+
+            if (modal) {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+
+            const contactForm = document.getElementById('contactForm');
+            const popupOverlay = document.getElementById('popupOverlay');
+            const popupCard = document.getElementById('popupCard');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupMessage = document.getElementById('popupMessage');
+            const nameField = document.getElementById('contactName');
+            const emailField = document.getElementById('contactEmail');
+            const phoneField = document.getElementById('contactPhone');
+            const messageField = document.getElementById('contactMessage');
+
+            function showPopup(type, title, message) {
+                if (!popupOverlay || !popupCard || !popupTitle || !popupMessage) return;
+
+                popupCard.className = `popup-card ${type}`;
+                popupTitle.textContent = title;
+                popupMessage.textContent = message;
+                popupOverlay.classList.add('active');
+
+                clearTimeout(showPopup.timeoutId);
+                showPopup.timeoutId = setTimeout(() => {
+                    popupOverlay.classList.remove('active');
+                }, 1800);
+            }
+
+            function setFieldState(field, isValid) {
+                if (!field) return;
+                field.classList.toggle('valid', isValid);
+                field.classList.toggle('invalid', !isValid);
+            }
+
+            function validateName(value) {
+                const trimmed = value.trim();
+                return trimmed.length > 0 && trimmed.length <= 50;
+            }
+
+            function validateEmail(value) {
+                const trimmed = value.trim();
+                return trimmed.length > 0 && trimmed.length <= 50 && trimmed.includes('@');
+            }
+
+            function validatePhone(value) {
+                const trimmed = value.trim();
+                if (trimmed.length === 0) {
+                    return true;
+                }
+                return /^\+63\d{10}$/.test(trimmed) && trimmed.length === 13;
+            }
+
+            function validateMessage(value) {
+                const trimmed = value.trim();
+                return trimmed.length > 0 && trimmed.length <= 200;
+            }
+
+            function validateField(field, type) {
+                if (!field) return false;
+                let isValid = false;
+
+                if (type === 'name') {
+                    isValid = validateName(field.value);
+                } else if (type === 'email') {
+                    isValid = validateEmail(field.value);
+                } else if (type === 'phone') {
+                    isValid = validatePhone(field.value);
+                } else if (type === 'message') {
+                    isValid = validateMessage(field.value);
+                }
+
+                setFieldState(field, isValid);
+                return isValid;
+            }
+
+            [nameField, emailField, phoneField, messageField].forEach((field) => {
+                if (!field) return;
+                field.addEventListener('input', () => {
+                    if (field === nameField) {
+                        validateField(field, 'name');
+                    } else if (field === emailField) {
+                        validateField(field, 'email');
+                    } else if (field === phoneField) {
+                        validateField(field, 'phone');
+                    } else if (field === messageField) {
+                        validateField(field, 'message');
+                    }
+                });
+            });
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+
+                    const isNameValid = validateField(nameField, 'name');
+                    const isEmailValid = validateField(emailField, 'email');
+                    const isPhoneValid = validateField(phoneField, 'phone');
+                    const isMessageValid = validateField(messageField, 'message');
+
+                    if (!isNameValid) {
+                        showPopup('warning', 'Name required', 'Please enter your full name in the name box.');
+                        nameField?.focus();
+                        return;
+                    }
+
+                    if (!isEmailValid) {
+                        showPopup('warning', 'Email required', 'Please enter a valid email address with an @ symbol.');
+                        emailField?.focus();
+                        return;
+                    }
+
+                    if (phoneField && phoneField.value.trim() && !isPhoneValid) {
+                        showPopup('warning', 'Invalid phone number', 'Please enter a valid phone number that starts with +63 and has 13 characters.');
+                        phoneField?.focus();
+                        return;
+                    }
+
+                    if (!isMessageValid) {
+                        showPopup('warning', 'Message required', 'Please write your message in the message box.');
+                        messageField?.focus();
+                        return;
+                    }
+
+                    showPopup('success', 'Success!', 'Your contact information is complete and ready to send.');
+                    contactForm.reset();
+                    [nameField, emailField, phoneField, messageField].forEach((field) => setFieldState(field, false));
+                });
+            }
+
+            popupOverlay?.addEventListener('click', (event) => {
+                if (event.target === popupOverlay) {
+                    popupOverlay.classList.remove('active');
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                    popupOverlay?.classList.remove('active');
+                }
+            });
+        </script>
+    </body>
+</html>
+

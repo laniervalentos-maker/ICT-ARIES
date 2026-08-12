@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Email</title>
+        <style>
+            :root {
+                --text: #fffdf8;
+                --muted: #e8f4f0;
+                --accent: #ffb86b;
+                --border: rgba(255, 255, 255, 0.18);
+                --shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: "Segoe UI", Roboto, Arial, sans-serif;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 24px;
+                color: var(--text);
+                background: linear-gradient(135deg, rgba(12, 72, 106, 0.86) 0%, rgba(66, 160, 157, 0.75) 45%, rgba(144, 208, 188, 0.82) 100%), url("Assets/images/images (5).jpg");
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+
+            .email-card {
+                width: min(92%, 560px);
+                padding: 36px 28px;
+                text-align: center;
+                border-radius: 24px;
+                background: linear-gradient(135deg, rgba(255, 250, 240, 0.16), rgba(255, 255, 255, 0.1));
+                border: 1px solid var(--border);
+                box-shadow: var(--shadow);
+                backdrop-filter: blur(8px);
+            }
+
+            h1 {
+                margin: 0 0 12px;
+                font-size: clamp(1.8rem, 3vw, 2.4rem);
+                color: #ffffff;
+            }
+
+            .intro {
+                margin: 0 0 20px;
+                color: var(--muted);
+                font-size: 1rem;
+            }
+
+            .email-link {
+                display: inline-block;
+                padding: 12px 18px;
+                border-radius: 999px;
+                text-decoration: none;
+                font-weight: 700;
+                color: #0a3d62;
+                background: var(--accent);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+            }
+
+            .email-link:hover {
+                background: #ffd08a;
+            }
+
+            .home-link {
+                display: inline-block;
+                margin-top: 14px;
+                padding: 10px 16px;
+                border-radius: 999px;
+                text-decoration: none;
+                font-weight: 700;
+                color: #0a3d62;
+                background: var(--accent);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+            }
+
+            .home-link:hover {
+                background: #ffd08a;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="email-card">
+            <h1>My Email Address</h1>
+            <p class="intro">Click the button below to open your email.</p>
+            <p style="font-size: 1.05rem; font-weight: 700; color: #ffffff; margin: 0 0 18px;">laniervalentos@gmail.com</p>
+            <a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=laniervalentos@gmail.com" target="_blank" rel="noopener noreferrer">Open Email</a>
+            <br>
+            <a class="home-link" href="Travel Page.html">Back to Home</a>
+        </div>
+    </body>
+</html>
