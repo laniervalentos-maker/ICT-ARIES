@@ -30,11 +30,13 @@
                 background-size: cover;
                 background-position: center;
                 background-attachment: fixed;
+                overflow-x: hidden;
             }
 
             .email-card {
                 width: min(92%, 560px);
-                padding: 36px 28px;
+                max-width: 100%;
+                padding: clamp(20px, 4vw, 36px) clamp(18px, 4vw, 28px);
                 text-align: center;
                 border-radius: 24px;
                 background: linear-gradient(135deg, rgba(255, 250, 240, 0.16), rgba(255, 255, 255, 0.1));
@@ -55,8 +57,12 @@
                 font-size: 1rem;
             }
 
-            .email-link {
-                display: inline-block;
+            .email-link,
+            .home-link {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 46px;
                 padding: 12px 18px;
                 border-radius: 999px;
                 text-decoration: none;
@@ -64,26 +70,50 @@
                 color: #0a3d62;
                 background: var(--accent);
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+                transition: transform 0.2s ease, background 0.2s ease;
+                width: auto;
+                max-width: 100%;
             }
 
-            .email-link:hover {
+            .email-link:hover,
+            .home-link:hover {
                 background: #ffd08a;
+                transform: translateY(-1px);
             }
 
             .home-link {
-                display: inline-block;
                 margin-top: 14px;
-                padding: 10px 16px;
-                border-radius: 999px;
-                text-decoration: none;
-                font-weight: 700;
-                color: #0a3d62;
-                background: var(--accent);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
             }
 
-            .home-link:hover {
-                background: #ffd08a;
+            @media (max-width: 600px) {
+                body {
+                    padding: 16px;
+                    background-attachment: scroll;
+                }
+
+                .email-card {
+                    width: min(100%, 560px);
+                    border-radius: 18px;
+                }
+
+                .email-link,
+                .home-link {
+                    width: 100%;
+                }
+
+                .intro {
+                    font-size: 0.95rem;
+                }
+            }
+
+            @media (max-width: 420px) {
+                h1 {
+                    font-size: 1.6rem;
+                }
+
+                .email-card {
+                    padding: 18px 14px;
+                }
             }
         </style>
     </head>

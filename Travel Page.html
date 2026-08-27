@@ -347,14 +347,16 @@
 
             .contact-input.invalid,
             .message-box.invalid {
-                border-color: #ffb86b;
-                box-shadow: 0 0 0 3px rgba(255, 184, 107, 0.18);
+                border-color: #f3b76b;
+                background: rgba(76, 45, 19, 0.35);
+                box-shadow: 0 0 0 3px rgba(243, 183, 107, 0.2);
             }
 
             .contact-input.valid,
             .message-box.valid {
-                border-color: #6ee7b7;
-                box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.18);
+                border-color: #8fe3c4;
+                background: rgba(16, 55, 52, 0.4);
+                box-shadow: 0 0 0 3px rgba(143, 227, 196, 0.2);
             }
 
             .message-box {
@@ -427,16 +429,18 @@
                 border-radius: 18px;
                 border: 1px solid var(--border);
                 box-shadow: var(--shadow);
-                background: linear-gradient(135deg, rgba(4, 19, 33, 0.95), rgba(11, 85, 107, 0.95));
+                background: linear-gradient(135deg, rgba(5, 24, 38, 0.96), rgba(18, 91, 108, 0.96));
                 text-align: center;
             }
 
             .popup-card.warning {
-                border-color: #ffb86b;
+                border-color: #f6c27a;
+                background: linear-gradient(135deg, rgba(86, 54, 24, 0.94), rgba(156, 102, 54, 0.92));
             }
 
             .popup-card.success {
-                border-color: #6ee7b7;
+                border-color: #9ae6b4;
+                background: linear-gradient(135deg, rgba(16, 62, 55, 0.94), rgba(28, 120, 117, 0.92));
             }
 
             .popup-title {
@@ -519,6 +523,11 @@
             }
 
             @media (max-width: 900px) {
+                .hero {
+                    min-height: 70vh;
+                    padding: 30px 18px;
+                }
+
                 .about-grid,
                 .location-grid,
                 .video-grid {
@@ -527,14 +536,25 @@
             }
 
             @media (max-width: 780px) {
+                .page-shell {
+                    padding: 20px 14px 40px;
+                }
+
                 .top-nav {
+                    width: 100%;
                     padding: 12px;
                     border-radius: 20px;
+                    gap: 8px;
                 }
 
                 .top-nav a {
-                    width: calc(50% - 6px);
+                    flex: 1 1 calc(50% - 8px);
+                    min-width: 0;
                     text-align: center;
+                }
+
+                .hero {
+                    border-radius: 20px;
                 }
 
                 .contact-form-grid {
@@ -543,18 +563,38 @@
             }
 
             @media (max-width: 600px) {
+                body {
+                    background-attachment: scroll;
+                }
+
                 .page-shell {
-                    padding: 16px 14px 40px;
+                    padding: 14px 12px 32px;
                 }
 
                 .hero {
-                    min-height: 72vh;
-                    padding: 24px 14px;
+                    min-height: 60vh;
+                    padding: 18px 12px;
+                }
+
+                .hero-content {
+                    max-width: 100%;
+                }
+
+                .top-nav {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    border-radius: 16px;
+                }
+
+                .top-nav a {
+                    width: 100%;
+                    flex-basis: auto;
                 }
 
                 .content-section,
                 .contact-section {
-                    padding: 20px 16px;
+                    padding: 18px 14px;
+                    border-radius: 18px;
                 }
 
                 .card-grid,
@@ -580,6 +620,29 @@
 
                 .audio-frame {
                     height: 180px;
+                }
+            }
+
+            @media (max-width: 420px) {
+                .top-nav {
+                    grid-template-columns: 1fr;
+                }
+
+                .eyebrow {
+                    letter-spacing: 0.18em;
+                }
+
+                h1 {
+                    font-size: clamp(2.1rem, 12vw, 2.9rem);
+                }
+
+                .hero p {
+                    font-size: 0.98rem;
+                }
+
+                .contact-input,
+                .message-box {
+                    font-size: 0.96rem;
                 }
             }
         </style>
