@@ -206,6 +206,8 @@ button {
     display: flex;
     gap: 12px;
 
+    flex-wrap: wrap;
+
     margin-top: 30px;
 }
 
@@ -1161,6 +1163,14 @@ button {
 
 .resume-btn {
     margin-top: 12px;
+
+    display: flex;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow-wrap: anywhere;
 }
 
 .contact-form {
@@ -1823,6 +1833,103 @@ body.dark .modal-content p {
     .footer {
         padding-left: 18px;
         padding-right: 18px;
+    }
+
+}
+
+
+/* =========================
+   FULL PORTFOLIO PDF PRINT
+========================= */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    body {
+        background: white !important;
+        color: #172033 !important;
+        overflow: visible !important;
+        user-select: text;
+    }
+
+    .header {
+        position: static !important;
+    }
+
+    .nav-links {
+        display: flex !important;
+        position: static !important;
+    }
+
+    .menu-toggle {
+        display: none !important;
+    }
+
+    .modal {
+        display: none !important;
+    }
+
+    main,
+    section,
+    .section,
+    .hero {
+        display: block !important;
+        min-height: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .hero,
+    .section {
+        padding: 28px 0 !important;
+    }
+
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .hero,
+    .gray-section {
+        background: white !important;
+    }
+
+    .hero-profile,
+    .info-card,
+    .strength-card,
+    .skill-card,
+    .project-card,
+    .destination-card,
+    .hobby,
+    .gallery-group,
+    .music-card,
+    .contact-details {
+        break-inside: avoid;
+        box-shadow: none !important;
+    }
+
+    img {
+        break-inside: avoid;
+
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+    }
+
+    iframe {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 352px;
+        break-inside: avoid;
     }
 
 }

@@ -395,17 +395,6 @@ contactForm.addEventListener(
 
 
 /* =========================
-   RESUME
-========================= */
-
-function printResume() {
-
-    window.print();
-
-}
-
-
-/* =========================
    ACTIVE NAVIGATION
 ========================= */
 
